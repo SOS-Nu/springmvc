@@ -1,5 +1,6 @@
 package vn.hoidanit.laptopshop.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +24,23 @@ public class UserController {
     public String getHomePage(Model model) {
         String test = this.userService.handleHello();
         model.addAttribute("eric", test);
-        model.addAttribute("hoidanit", "hello drom hoi dan it");
+        model.addAttribute("hoidanit", "from controller with model");
         return "hello";
+    }
+
+    @RequestMapping("/admin/user")
+    public String getUserPage(Model model) {
+        String test = this.userService.handleHello();
+        model.addAttribute("eric", test);
+        model.addAttribute("hoidanit", "from controller with model");
+        return "admin/user/create";
     }
 }
 
 // @RestController
 // public class UserController {
 
+// // DI : dependency injection
 // private UserService userService;
 
 // public UserController(UserService userService) {
